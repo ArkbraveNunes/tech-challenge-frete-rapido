@@ -1,29 +1,32 @@
-import axios, {
-  AxiosInstance,
-  CreateAxiosDefaults,
-  HttpStatusCode,
-} from 'axios';
+import axios, { AxiosInstance, HttpStatusCode } from 'axios';
 
-import {
-  RequestFactory,
-  RequestFactoryMethodInput,
-} from './request-factory.interface';
+import { RequestFactory } from './request-factory.interface';
 import { AXIOS_ERRORS, HTTP_METHODS } from './request-factory.enum';
 import { ErrorPatternService } from '@common/error-pattern';
+import {
+  RequestFactoryMethodInput,
+  RequestFactoryOptionsInput,
+  RequestFactoryRetriesHeader,
+} from './request-factory.dto';
 
 export class RequestFactoryService implements RequestFactory {
-  httpService: AxiosInstance;
-  axiosRetriesHeader: Record<string, any> = {
-    axiosRetries: 3,
-  };
-  constructor(private readonly requestFactoryOptions: CreateAxiosDefaults) {
-    this.httpService = axios.create({
-      ...requestFactoryOptions,
+  _httpService: AxiosInstance;
+  axiosRetriesHeader: RequestFactoryRetriesHeader;
+  constructor(
+    private readonly requestFactoryOptions: RequestFactoryOptionsInput,
+  ) {
+    const { retries, ...configOptions } = requestFactoryOptions;
+
+    this._httpService = axios.create({
+      ...configOptions,
     });
-    this.httpService.interceptors.response.use(
+
+    this._httpService.interceptors.response.use(
       (response) => response.data,
       (error) => this.axiosRetryInterceptor(error),
     );
+
+    this.axiosRetriesHeader = { requestRetries: retries || 3 };
   }
 
   async get(
@@ -35,7 +38,7 @@ export class RequestFactoryService implements RequestFactory {
       requestFactoryMethodInput.customConfig || {},
     ];
 
-    return this.httpService.get(url, {
+    return this._httpService.get(url, {
       ...customConfig,
       headers: { ...this.axiosRetriesHeader, ...headers },
     });
@@ -51,7 +54,7 @@ export class RequestFactoryService implements RequestFactory {
       requestFactoryMethodInput.customConfig || {},
     ];
 
-    return this.httpService.post(url, data, {
+    return this._httpService.post(url, data, {
       ...customConfig,
       headers: { ...this.axiosRetriesHeader, ...headers },
     });
@@ -67,7 +70,7 @@ export class RequestFactoryService implements RequestFactory {
       requestFactoryMethodInput.customConfig || {},
     ];
 
-    return this.httpService.put(url, data, {
+    return this._httpService.put(url, data, {
       ...customConfig,
       headers: { ...this.axiosRetriesHeader, ...headers },
     });
@@ -83,7 +86,7 @@ export class RequestFactoryService implements RequestFactory {
       requestFactoryMethodInput.customConfig || {},
     ];
 
-    return this.httpService.patch(url, data, {
+    return this._httpService.patch(url, data, {
       ...customConfig,
       headers: { ...this.axiosRetriesHeader, ...headers },
     });
@@ -98,7 +101,7 @@ export class RequestFactoryService implements RequestFactory {
       requestFactoryMethodInput.customConfig || {},
     ];
 
-    return this.httpService.delete(url, {
+    return this._httpService.delete(url, {
       ...customConfig,
       headers: { ...this.axiosRetriesHeader, ...headers },
     });
@@ -207,10 +210,10 @@ export class RequestFactoryService implements RequestFactory {
   async axiosRetryInterceptor(
     error: Record<string, any>,
   ): Promise<Record<string, any> | void> {
-    const axiosRetries = error.config?.headers?.axiosRetries | 0;
+    const requestRetries = error.config?.headers?.requestRetries || 0;
     const axiosRetriesStatus = [HttpStatusCode.RequestTimeout];
 
-    if (axiosRetries === 0) {
+    if (requestRetries === 0) {
       this.errorHandlerInterceptor(error);
     } else if (
       error.response.status &&
@@ -219,7 +222,7 @@ export class RequestFactoryService implements RequestFactory {
     ) {
       const headers = {
         ...error.config.headers,
-        axiosRetries: axiosRetries - 1,
+        requestRetries: requestRetries - 1,
       };
       switch (error.config.method) {
         case HTTP_METHODS.GET:

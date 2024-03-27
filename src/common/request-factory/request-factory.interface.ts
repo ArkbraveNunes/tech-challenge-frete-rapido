@@ -1,11 +1,4 @@
-import { AxiosRequestConfig } from 'axios';
-
-export type RequestFactoryMethodInput = {
-  url: string;
-  data: Record<string, any>;
-  headers?: Record<string, any>;
-  customConfig?: AxiosRequestConfig;
-};
+import { RequestFactoryMethodInput } from './request-factory.dto';
 
 export interface RequestFactory {
   get(
