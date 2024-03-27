@@ -1,0 +1,8 @@
+export enum FRETE_RAPIDO_CATEGORY {
+  GIFTS = 7,
+}
+
+export enum FRETE_RAPIDO_SIMULATION_TYPE {
+  FRACTIONED = 0,
+  CAPACITY = 1,
+}
