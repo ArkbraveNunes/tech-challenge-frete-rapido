@@ -5,6 +5,7 @@ module.exports = {
   transform: {
     '^.+\\.(t|j)sx?$': 'ts-jest',
   },
+  modulePathIgnorePatterns: ['<rootDir>/dist/'],
   moduleNameMapper: {
     '^@common(.*)$': '<rootDir>/src/common/$1',
     '^@application(.*)$': '<rootDir>/src/application/$1',

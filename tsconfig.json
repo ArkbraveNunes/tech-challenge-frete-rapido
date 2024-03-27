@@ -10,6 +10,10 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "noImplicitAny": false,
+    "incremental": true,
+    "strictNullChecks": false,
+    "strictBindCallApply": false,
+    "noFallthroughCasesInSwitch": false,
     "paths": {
       "@common/*": [
         "./src/common/*"

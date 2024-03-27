@@ -6,6 +6,7 @@ module.exports = {
   transform: {
     '^.+\\.(t|j)sx?$': 'ts-jest',
   },
+  modulePathIgnorePatterns: ['<rootDir>/dist/'],
   moduleNameMapper: {},
   testEnvironment: 'node',
 };
