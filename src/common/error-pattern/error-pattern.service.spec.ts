@@ -1,6 +1,6 @@
 import { HttpStatusCode } from 'axios';
 import { ErrorPatternService } from './error-pattern.service';
-import { mockErrorPattern } from '@test/mock';
+import { mockErrorPattern500, mockErrorPattern400 } from '@test/mock';
 import { faker } from '@faker-js/faker/locale/pt_BR';
 
 describe('ErrorPatternService', () => {
@@ -17,9 +17,9 @@ describe('ErrorPatternService', () => {
       data: null,
     });
 
-    Object.keys(mockErrorPattern).forEach((key) => {
+    Object.keys(mockErrorPattern400).forEach((key) => {
       expect(error).toHaveProperty(key);
-      expect(typeof error[key]).toBe(typeof mockErrorPattern[key]);
+      expect(typeof error[key]).toBe(typeof mockErrorPattern400[key]);
     });
   });
 
@@ -28,9 +28,9 @@ describe('ErrorPatternService', () => {
       message: faker.string.sample(),
     });
 
-    Object.keys(mockErrorPattern).forEach((key) => {
+    Object.keys(mockErrorPattern500).forEach((key) => {
       expect(error).toHaveProperty(key);
-      expect(typeof error[key]).toBe(typeof mockErrorPattern[key]);
+      expect(typeof error[key]).toBe(typeof mockErrorPattern500[key]);
     });
   });
 
@@ -41,9 +41,9 @@ describe('ErrorPatternService', () => {
       data: null,
     });
 
-    Object.keys(mockErrorPattern).forEach((key) => {
+    Object.keys(mockErrorPattern500).forEach((key) => {
       expect(error).toHaveProperty(key);
-      expect(typeof error[key]).toBe(typeof mockErrorPattern[key]);
+      expect(typeof error[key]).toBe(typeof mockErrorPattern500[key]);
     });
   });
 });
