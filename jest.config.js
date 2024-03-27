@@ -1,11 +1,17 @@
 module.exports = {
   displayName: 'tech-challenge-frete-rapido',
   clearMocks: true,
-  rootDir: './src',
+  rootDir: '.',
   transform: {
     '^.+\\.(t|j)sx?$': 'ts-jest',
   },
-  moduleNameMapper: {},
+  moduleNameMapper: {
+    '^@common(.*)$': '<rootDir>/src/common/$1',
+    '^@application(.*)$': '<rootDir>/src/application/$1',
+    '^@domain(.*)$': '<rootDir>/src/domain/$1',
+    '^@infra(.*)$': '<rootDir>/src/infra/$1',
+    '^@test(.*)$': '<rootDir>/src/test/$1',
+  },
   testEnvironment: 'node',
   reporters: [
     'default',
