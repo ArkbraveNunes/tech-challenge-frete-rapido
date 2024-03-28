@@ -18,12 +18,12 @@ export class ErrorPatternService implements ErrorPattern {
     };
   }
   internalServerError(
-    errorPatternInput: Pick<ErrorPatternInput, 'message'>,
+    errorPatternInput?: Partial<Pick<ErrorPatternInput, 'message'>>,
   ): ErrorPatternOutput {
     return {
       statusCode: ERROR_STATUS_CODE.INTERNAL_SERVER_ERROR,
       data: null,
-      message: errorPatternInput.message,
+      message: errorPatternInput?.message || 'Internal Server Error',
     };
   }
 }
