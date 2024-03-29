@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express';
 import { QuoteRoutes } from './quote.routes';
+import { MetricsRoutes } from './metrics.routes';
 
 import { env } from '@common/env';
 
@@ -25,6 +26,7 @@ class Routes {
     });
 
     new QuoteRoutes(this._routes).setRoutes();
+    new MetricsRoutes(this._routes).setRoutes();
   }
 }
 

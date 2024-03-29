@@ -9,7 +9,7 @@ import { GetMetricsInput, ISimulationContract } from '@domain/contract';
 import { SimulationRepository } from '@infra/repository';
 
 export class MetricsService
-  implements IService<MetricsServiceInputDto, Promise<MetricsServiceOutputDto>>
+  implements IService<MetricsServiceInputDto, MetricsServiceOutputDto>
 {
   logger: ILogger;
   errorPattern: IErrorPattern;
@@ -24,7 +24,7 @@ export class MetricsService
   }
   async exec({
     lastQuotes,
-  }: MetricsServiceInputDto): Promise<Promise<MetricsServiceOutputDto>> {
+  }: MetricsServiceInputDto): Promise<MetricsServiceOutputDto> {
     const getMetricsInput: GetMetricsInput = {};
 
     if (lastQuotes) {
