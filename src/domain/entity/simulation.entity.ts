@@ -2,9 +2,21 @@ import { Types } from 'mongoose';
 
 import { ISimulation } from '@domain/entity';
 
+export type SimulationProps = Pick<
+  SimulationEntity,
+  | 'id'
+  | 'name'
+  | 'deadline'
+  | 'service'
+  | 'deliveryDate'
+  | 'price'
+  | 'createdAt'
+  | 'updatedAt'
+>;
+
 export type CreateSimulationProps = Pick<
   ISimulation,
-  'name' | 'service' | 'deadline' | 'price'
+  'name' | 'service' | 'deadline' | 'deliveryDate' | 'price'
 >;
 
 export type DbSimulationProps = Omit<ISimulation, 'id'> & {
@@ -15,12 +27,13 @@ export class SimulationEntity {
   id: string;
   name: string;
   service: string;
-  deadline: string;
+  deadline: number;
+  deliveryDate: string;
   price: number;
   createdAt: string;
   updatedAt: string;
 
-  constructor(simulation: ISimulation) {
+  constructor(simulation: SimulationProps) {
     Object.assign(this, simulation);
   }
 
@@ -45,6 +58,7 @@ export class SimulationEntity {
       name: dbSimulationProps.name,
       service: dbSimulationProps.service,
       deadline: dbSimulationProps.deadline,
+      deliveryDate: dbSimulationProps.deliveryDate,
       price: dbSimulationProps.price,
       createdAt: new Date(dbSimulationProps.createdAt).toISOString(),
       updatedAt: new Date(dbSimulationProps.updatedAt).toISOString(),

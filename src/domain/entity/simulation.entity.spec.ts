@@ -6,7 +6,8 @@ describe('SimulationEntity', () => {
   it('should return a SimulationEntity instance with valid props on create()', () => {
     const simulation = SimulationEntity.create({
       name: faker.string.sample(),
-      deadline: faker.string.sample(),
+      deadline: faker.number.int(),
+      deliveryDate: faker.date.future().toISOString(),
       service: faker.string.sample(),
       price: faker.number.int(),
     });

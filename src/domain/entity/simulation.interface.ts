@@ -1,8 +1,8 @@
 export interface ISimulation {
-  id: string;
   name: string;
   service: string;
-  deadline: string;
+  deadline: number;
+  deliveryDate: string;
   price: number;
   createdAt: string;
   updatedAt: string;
