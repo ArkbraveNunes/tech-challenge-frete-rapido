@@ -1,4 +1,3 @@
-import { env } from '@common/env';
 import { RequestFactory, RequestFactoryService } from '@common/request-factory';
 import {
   FreteRapidoQuoteSimulateInput,
@@ -6,8 +5,9 @@ import {
   QuoteSimulateBody,
 } from './frete-rapido.dto';
 import { FRETE_RAPIDO_SIMULATION_TYPE } from './frete-rapido.enum';
+import { env } from '@common/env';
 
-export class FreteRapidoService {
+export class FreteRapidoAdapter {
   _requestFactory: RequestFactory;
 
   constructor() {

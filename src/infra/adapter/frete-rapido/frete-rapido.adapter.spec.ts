@@ -1,4 +1,4 @@
-import { FreteRapidoService } from './frete-rapido.service';
+import { FreteRapidoAdapter } from './frete-rapido.adapter';
 import {
   mockErrorPattern400,
   mockErrorPattern500,
@@ -18,11 +18,11 @@ jest.mock('@common/request-factory', () => ({
   ),
 }));
 
-describe('FreteRapidoService', () => {
-  let service: FreteRapidoService;
+describe('FreteRapidoAdapter', () => {
+  let service: FreteRapidoAdapter;
 
   beforeEach(() => {
-    service = new FreteRapidoService();
+    service = new FreteRapidoAdapter();
   });
 
   it('status 200 - should call quoteSimulate - return success', async () => {
