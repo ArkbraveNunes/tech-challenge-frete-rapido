@@ -1,17 +1,14 @@
 import { Request, Response } from 'express';
 
-import { LoggerService, Logger } from '@common/logger';
 import { QuoteInputDto, QuoteOutputDto } from '@application/dto';
 import { QuoteService } from '@domain/service';
-import { ErrorPatternService, ErrorPattern } from '@common/error-pattern';
+import { ErrorPatternService, IErrorPattern } from '@common/error-pattern';
 
 export class QuoteController {
-  logger: Logger;
-  errorPattern: ErrorPattern;
+  errorPattern: IErrorPattern;
   _service: QuoteService;
 
   constructor() {
-    this.logger = new LoggerService(QuoteController.name);
     this.errorPattern = new ErrorPatternService();
     this._service = new QuoteService();
   }

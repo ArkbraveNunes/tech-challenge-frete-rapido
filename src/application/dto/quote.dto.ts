@@ -1,3 +1,5 @@
+import { QuoteServiceOutputDto } from '@domain/service';
+
 export type QuoteInputDto = {
   recipient: {
     address: {
@@ -16,11 +18,4 @@ export type QuoteInputDto = {
   }[];
 };
 
-export type QuoteOutputDto = {
-  carrier: {
-    name: string;
-    service: string;
-    deadline: number;
-    price: number;
-  }[];
-};
+export type QuoteOutputDto = QuoteServiceOutputDto;
