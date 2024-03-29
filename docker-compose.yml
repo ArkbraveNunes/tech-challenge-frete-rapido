@@ -1,0 +1,30 @@
+version: '3'
+services:
+  api.frete-rapido-integration:
+    image: frete-rapido-integration:latest
+    build: ./
+    env_file: ./.env
+    container_name: api.frete-rapido-integration
+    volumes:
+      - ./:/app
+    command: sh -c "npm i --ignore-scripts && npm run start:dev"
+    ports:
+      - 3000:3000
+    depends_on:
+      - db.mongo.frete-rapido-integration
+
+  db.mongo.frete-rapido-integration:
+    image: mongo:latest
+    container_name: db.mongo.frete-rapido-integration
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${APPLICATION__DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${APPLICATION__DB_PASS}
+      MONGO_INITDB_DATABASE: ${APPLICATION__DB_NAME}
+    volumes:
+      - db.mongo.frete-rapido-integration:/data/db
+    ports:
+      - 27017:27017
+    restart: always
+
+volumes:
+  db.mongo.frete-rapido-integration:

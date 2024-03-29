@@ -41,10 +41,6 @@ module.exports = {
       {
         selector: 'typeLike',
         format: ['PascalCase'],
-        custom: {
-          regex: '^I[A-Z]',
-          match: false,
-        },
       },
       {
         selector: 'enum',
