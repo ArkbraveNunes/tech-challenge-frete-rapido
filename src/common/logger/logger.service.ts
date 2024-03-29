@@ -2,9 +2,9 @@ import * as proc from 'process';
 import * as winston from 'winston';
 
 import { env } from '@common/env';
-import { Logger } from './logger.interface';
+import { ILogger, LoggerErrorInput } from './logger.interface';
 
-export class LoggerService implements Logger {
+export class LoggerService implements ILogger {
   _winstonConfig: winston.LoggerOptions;
 
   constructor(context: string) {
@@ -40,9 +40,13 @@ export class LoggerService implements Logger {
     this.logMessage().warn(msg);
   }
 
-  error(msg: string | Record<string, any>): void {
-    this.logMessage().error(
-      `Error: ${typeof msg === 'object' ? JSON.stringify(msg) : msg}`,
-    );
+  error(loggerErrorInput: LoggerErrorInput): void {
+    const msg = loggerErrorInput.msg || '';
+    const error =
+      typeof loggerErrorInput.error === 'object'
+        ? JSON.stringify(loggerErrorInput.error)
+        : loggerErrorInput.error;
+
+    this.logMessage().error(`${msg} | Error: ${error}`);
   }
 }

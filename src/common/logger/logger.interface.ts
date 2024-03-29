@@ -1,6 +1,11 @@
-export interface Logger {
+export type LoggerErrorInput = {
+  msg?: string;
+  error: any;
+};
+
+export interface ILogger {
   debug(msg: string): void;
   info(msg: string): void;
   warn(msg: string): void;
-  error(msg: string | Record<string, any>): void;
+  error(loggerErrorInput: LoggerErrorInput): void;
 }

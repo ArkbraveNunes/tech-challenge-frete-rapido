@@ -37,7 +37,7 @@ describe('LoggerService', () => {
   it('should call error', async () => {
     jest.spyOn(winston, 'createLogger');
 
-    service.error(faker.string.sample());
+    service.error({ msg: faker.string.sample(), error: {} });
 
     expect(winston.createLogger).toHaveBeenCalledTimes(1);
   });

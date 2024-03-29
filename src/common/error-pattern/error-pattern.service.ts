@@ -1,8 +1,8 @@
 import { ErrorPatternInput, ErrorPatternOutput } from './error-pattern.dto';
 import { ERROR_STATUS_CODE } from './error-pattern.enum';
-import { ErrorPattern } from './error-pattern.interface';
+import { IErrorPattern } from './error-pattern.interface';
 
-export class ErrorPatternService implements ErrorPattern {
+export class ErrorPatternService implements IErrorPattern {
   customError(errorPatternInput: ErrorPatternInput): ErrorPatternOutput {
     return {
       statusCode: errorPatternInput.statusCode,

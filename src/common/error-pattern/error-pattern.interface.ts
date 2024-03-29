@@ -1,6 +1,6 @@
 import { ErrorPatternInput, ErrorPatternOutput } from './error-pattern.dto';
 
-export interface ErrorPattern {
+export interface IErrorPattern {
   badRequest(errorPatternInput: Partial<ErrorPatternInput>): ErrorPatternOutput;
   internalServerError(
     errorPatternInput?: Partial<Pick<ErrorPatternInput, 'message'>>,
