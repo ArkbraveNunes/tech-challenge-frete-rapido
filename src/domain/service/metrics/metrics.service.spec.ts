@@ -4,6 +4,7 @@ import {
   mockErrorPattern500,
   mockMetricsServiceInput,
   mockGetMetricsRepositoryOutput,
+  mockMetricsServiceOutput,
 } from '@test/mock';
 
 jest.mock('@infra/repository', () => ({
@@ -38,10 +39,10 @@ describe('MetricsService', () => {
     expect(service._simulationRepository.getMetrics).toHaveBeenCalledWith({
       limit: mockMetricsServiceInput.lastQuotes,
     });
-    expect(Array.isArray(result)).toBe(true);
-    expect(result).toHaveLength(1);
+    expect(Array.isArray(result.carriers)).toBe(true);
+    expect(result.carriers).toHaveLength(1);
 
-    result.forEach((item) => {
+    result.carriers.forEach((item) => {
       Object.keys(mockGetMetricsRepositoryOutput[0]).forEach((key) => {
         expect(item).toHaveProperty(key);
         expect(typeof item[key]).toBe(
@@ -49,6 +50,13 @@ describe('MetricsService', () => {
         );
       });
     });
+
+    expect(typeof result.maxPriceGeneral).toBe(
+      typeof mockMetricsServiceOutput.maxPriceGeneral,
+    );
+    expect(typeof result.minPriceGeneral).toBe(
+      typeof mockMetricsServiceOutput.minPriceGeneral,
+    );
   });
 
   it('error status 500 - should call exec - database error - return internalServerError', async () => {

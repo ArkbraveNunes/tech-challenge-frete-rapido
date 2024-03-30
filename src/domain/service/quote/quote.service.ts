@@ -52,7 +52,6 @@ export class QuoteService {
 
       return { carrier: simulations };
     } catch (error: any) {
-      console.log(error);
       this.logger.error({ error: error });
 
       throw error.statusCode

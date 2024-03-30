@@ -31,8 +31,24 @@ export class MetricsService
       getMetricsInput.limit = lastQuotes;
     }
 
-    return this._simulationRepository.getMetrics({
+    const metrics = await this._simulationRepository.getMetrics({
       ...getMetricsInput,
     });
+
+    let [maxPriceGeneral, minPriceGeneral] = [0, 0];
+
+    metrics.forEach(({ maxPrice, minPrice }, index) => {
+      if (index === 0) {
+        maxPriceGeneral = maxPrice;
+        minPriceGeneral = minPrice;
+      } else {
+        maxPriceGeneral =
+          maxPriceGeneral < maxPrice ? maxPrice : maxPriceGeneral;
+        minPriceGeneral =
+          minPriceGeneral > minPrice ? minPrice : minPriceGeneral;
+      }
+    });
+
+    return { carriers: metrics, maxPriceGeneral, minPriceGeneral };
   }
 }

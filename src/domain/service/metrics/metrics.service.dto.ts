@@ -4,4 +4,8 @@ export type MetricsServiceInputDto = {
   lastQuotes: number;
 };
 
-export type MetricsServiceOutputDto = GetMetricsOutput;
+export type MetricsServiceOutputDto = {
+  carriers: GetMetricsOutput;
+  maxPriceGeneral: number;
+  minPriceGeneral: number;
+};
