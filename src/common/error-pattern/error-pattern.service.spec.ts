@@ -13,7 +13,7 @@ describe('ErrorPatternService', () => {
   it('should call badRequest - return badRequest error', async () => {
     const error = service.badRequest({
       statusCode: HttpStatusCode.RequestTimeout,
-      message: faker.string.sample(),
+      message: [faker.string.sample()],
       data: null,
     });
 
@@ -25,7 +25,7 @@ describe('ErrorPatternService', () => {
 
   it('should call internalServerError - return internalServerError error', async () => {
     const error = service.internalServerError({
-      message: faker.string.sample(),
+      message: [faker.string.sample()],
     });
 
     Object.keys(mockErrorPattern500).forEach((key) => {
@@ -37,7 +37,7 @@ describe('ErrorPatternService', () => {
   it('should call customError - return customError error', async () => {
     const error = service.customError({
       statusCode: HttpStatusCode.RequestTimeout,
-      message: faker.string.sample(),
+      message: [faker.string.sample()],
       data: null,
     });
 

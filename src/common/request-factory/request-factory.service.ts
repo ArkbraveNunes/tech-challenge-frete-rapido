@@ -154,7 +154,7 @@ export class RequestFactoryService implements RequestFactory {
       [AXIOS_ERRORS.ERR_BAD_REQUEST]: {
         status: HttpStatusCode.BadRequest,
         message:
-          'Axios Request Error: Requested has unexpected format or missing required parameters.',
+          'Axios Request Error: Requested to external API has unexpected format or missing required parameters.',
       },
       [AXIOS_ERRORS.ERR_CANCELED]: {
         status: HttpStatusCode.MethodNotAllowed,
@@ -177,29 +177,30 @@ export class RequestFactoryService implements RequestFactory {
     switch (true) {
       case error.response && error.response.status >= 500:
         errorObject = errorPattern.internalServerError({
-          message: httpAxiosErrors.ECONNREFUSED.message,
+          message: [httpAxiosErrors.ECONNREFUSED.message],
         });
         break;
       case error.response && error.response.status >= 400:
         errorObject = errorPattern.badRequest({
           statusCode: httpAxiosErrors.ERR_BAD_REQUEST.status,
-          message:
+          message: [
             httpAxiosErrors[
               (error.code || AXIOS_ERRORS.ERR_BAD_REQUEST) as AXIOS_ERRORS
             ].message,
+          ],
           data: error.response.data,
         });
         break;
       case error.code && Object.keys(AXIOS_ERRORS).includes(error.code):
         errorObject = errorPattern.badRequest({
           statusCode: httpAxiosErrors[error.code as AXIOS_ERRORS].status,
-          message: httpAxiosErrors[error.code as AXIOS_ERRORS].message,
+          message: [httpAxiosErrors[error.code as AXIOS_ERRORS].message],
           data: null,
         });
         break;
       default:
         errorObject = errorPattern.internalServerError({
-          message: httpAxiosErrors.ERR_NETWORK.message,
+          message: [httpAxiosErrors.ERR_NETWORK.message],
         });
         break;
     }
