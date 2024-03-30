@@ -4,10 +4,10 @@ import { faker } from '@faker-js/faker/locale/pt_BR';
 export const mockGetMetricsRepositoryOutput: GetMetricsOutput = [
   {
     name: faker.company.name(),
-    maxPrice: faker.number.float(),
-    mediaPrice: faker.number.float(),
-    minPrice: faker.number.float(),
-    totalPrice: faker.number.float(),
-    totalSimulations: faker.number.int(),
+    maxPrice: parseFloat(faker.number.float().toFixed(2)),
+    mediaPrice: parseFloat(faker.number.float().toFixed(2)),
+    minPrice: parseFloat(faker.number.float().toFixed(2)),
+    totalPrice: parseFloat(faker.number.float().toFixed(2)),
+    totalSimulations: faker.number.int({ max: 10 }),
   },
 ];
