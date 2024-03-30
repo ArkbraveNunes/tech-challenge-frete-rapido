@@ -1,5 +1,8 @@
-import { QuoteController } from '@application/controller';
 import { Request, Response, Router } from 'express';
+
+import { QuoteController } from '@application/controller';
+import { validateQuoteInput } from '@application/dto';
+import { ValidateData } from '@common/middlewares';
 
 export class QuoteRoutes {
   private _routeInstance: Router;
@@ -9,8 +12,10 @@ export class QuoteRoutes {
   }
 
   setRoutes(): void {
-    this._routeInstance.route('/v1/quote').post((req: Request, res: Response) =>
-      /*
+    this._routeInstance
+      .route('/v1/quote')
+      .post(ValidateData(validateQuoteInput), (req: Request, res: Response) =>
+        /*
         #swagger.tags = ['Quote']
         #swagger.description = 'Create a shipping quote using the external API Frete Rapido'
         #swagger.parameters['body'] = {
@@ -28,7 +33,7 @@ export class QuoteRoutes {
             schema: { $ref: '#/definitions/ErrorPattern500' }
         }
       */
-      new QuoteController().exec(req, res),
-    );
+        new QuoteController().exec(req, res),
+      );
   }
 }

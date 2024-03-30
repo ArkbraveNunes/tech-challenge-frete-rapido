@@ -1,4 +1,6 @@
 import { MetricsController } from '@application/controller';
+import { validateMetricsInput } from '@application/dto';
+import { ValidateData } from '@common/middlewares';
 import { Request, Response, Router } from 'express';
 
 export class MetricsRoutes {
@@ -11,7 +13,7 @@ export class MetricsRoutes {
   setRoutes(): void {
     this._routeInstance
       .route('/v1/metrics')
-      .get((req: Request, res: Response) =>
+      .get(ValidateData(validateMetricsInput), (req: Request, res: Response) =>
         /*
         #swagger.tags = ['Metrics']
         #swagger.description = 'Get the metrics of all quotes stored in the database.'
