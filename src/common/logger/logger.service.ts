@@ -1,5 +1,5 @@
-import * as proc from 'process';
-import * as winston from 'winston';
+import proc from 'process';
+import winston from 'winston';
 
 import { env } from '@common/env';
 import { ILogger, LoggerErrorInput } from './logger.interface';

@@ -1,4 +1,4 @@
-import * as dotenv from 'dotenv';
+import dotenv from 'dotenv';
 dotenv.config();
 
 export const env = Object.freeze({
@@ -7,6 +7,7 @@ export const env = Object.freeze({
   appName: 'Frete Rapido Integration API',
   appDescription: 'Frete Rapido Integration API',
   appVersion: process.env.VERSION || 'localhost',
+  appBasePath: '/frete-rapido',
   database: {
     host: process.env.APPLICATION__DB_HOST,
     port: process.env.APPLICATION__DB_PORT,

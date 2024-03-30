@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker/locale/pt_BR';
-import * as winston from 'winston';
+import winston from 'winston';
 
 import { LoggerService } from './logger.service';
 
