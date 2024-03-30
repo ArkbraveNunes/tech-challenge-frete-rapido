@@ -140,38 +140,38 @@
               "properties": {
                 "name": {
                   "type": "string",
-                  "example": "Silva, Batista e Martins"
+                  "example": "Xavier EIRELI"
                 },
                 "maxPrice": {
                   "type": "number",
-                  "example": 0.64
+                  "example": 0.05
                 },
                 "mediaPrice": {
                   "type": "number",
-                  "example": 0.82
+                  "example": 0.03
                 },
                 "minPrice": {
                   "type": "number",
-                  "example": 0.39
+                  "example": 0.59
                 },
                 "totalPrice": {
                   "type": "number",
-                  "example": 0.17
+                  "example": 0.4
                 },
                 "totalSimulations": {
                   "type": "number",
-                  "example": 2
+                  "example": 6
                 }
               }
             }
           },
           "maxPriceGeneral": {
             "type": "number",
-            "example": 7
+            "example": 3
           },
           "minPriceGeneral": {
             "type": "number",
-            "example": 4
+            "example": 2
           }
         },
         "xml": {
@@ -189,7 +189,7 @@
                 "properties": {
                   "zipcode": {
                     "type": "string",
-                    "example": "97226315"
+                    "example": "28460738"
                   }
                 }
               }
@@ -206,31 +206,31 @@
                 },
                 "amount": {
                   "type": "number",
-                  "example": 5
+                  "example": 9
                 },
                 "unitary_weight": {
                   "type": "number",
-                  "example": 0.77
+                  "example": 0.03
                 },
                 "price": {
                   "type": "number",
-                  "example": 0.11
+                  "example": 0.31
                 },
                 "sku": {
                   "type": "string",
-                  "example": "[&`+9CrlNS"
+                  "example": "DT&olJ&h>>"
                 },
                 "height": {
                   "type": "number",
-                  "example": 0.82
+                  "example": 0.76
                 },
                 "width": {
                   "type": "number",
-                  "example": 0.98
+                  "example": 0.72
                 },
                 "length": {
                   "type": "number",
-                  "example": 0.09
+                  "example": 0.69
                 }
               }
             }
@@ -250,35 +250,35 @@
               "properties": {
                 "id": {
                   "type": "string",
-                  "example": "aec24dba7da85a0515a7fdee"
+                  "example": "ccd1608aa7526e93df464ede"
                 },
                 "name": {
                   "type": "string",
-                  "example": "Moreira Comércio"
+                  "example": "Xavier-Nogueira"
                 },
                 "service": {
                   "type": "string",
-                  "example": "Santos-Macedo"
+                  "example": "Pereira, Macedo e Moreira"
                 },
                 "deadline": {
                   "type": "number",
-                  "example": 3
+                  "example": 1
                 },
                 "deliveryDate": {
                   "type": "string",
-                  "example": "2024-11-26T11:30:09.184Z"
+                  "example": "2024-04-17T12:34:50.956Z"
                 },
                 "price": {
                   "type": "number",
-                  "example": 0
+                  "example": 0.83
                 },
                 "createdAt": {
                   "type": "string",
-                  "example": "2024-03-30T20:41:56.445Z"
+                  "example": "2024-03-30T22:38:52.732Z"
                 },
                 "updatedAt": {
                   "type": "string",
-                  "example": "2024-03-30T20:41:56.445Z"
+                  "example": "2024-03-30T22:38:52.732Z"
                 }
               }
             }
@@ -296,10 +296,18 @@
             "example": 400
           },
           "message": {
-            "type": "string",
-            "example": "BadRequest"
+            "type": "array",
+            "example": [
+              "BadRequest"
+            ],
+            "items": {
+              "type": "string"
+            }
           },
-          "data": {}
+          "data": {
+            "type": "object",
+            "properties": {}
+          }
         },
         "xml": {
           "name": "ErrorPattern400"
@@ -313,10 +321,18 @@
             "example": 500
           },
           "message": {
-            "type": "string",
-            "example": "InternalServerError"
+            "type": "array",
+            "example": [
+              "InternalServerError"
+            ],
+            "items": {
+              "type": "string"
+            }
           },
-          "data": {}
+          "data": {
+            "type": "object",
+            "properties": {}
+          }
         },
         "xml": {
           "name": "ErrorPattern500"

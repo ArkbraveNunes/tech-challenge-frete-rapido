@@ -3,12 +3,12 @@ import { HttpStatusCode } from 'axios';
 
 export const mockErrorPattern500: ErrorPatternOutput = {
   statusCode: HttpStatusCode.InternalServerError,
-  message: HttpStatusCode[HttpStatusCode.InternalServerError],
-  data: null,
+  message: [HttpStatusCode[HttpStatusCode.InternalServerError]],
+  data: {},
 };
 
 export const mockErrorPattern400: ErrorPatternOutput = {
   statusCode: HttpStatusCode.BadRequest,
-  message: HttpStatusCode[HttpStatusCode.BadRequest],
-  data: null,
+  message: [HttpStatusCode[HttpStatusCode.BadRequest]],
+  data: {},
 };

@@ -1,4 +1,5 @@
 import { SimulationEntity } from '@domain/entity';
+import { FRETE_RAPIDO_CATEGORY } from '@infra/adapter';
 
 export type QuoteServiceInputDto = {
   recipient: {
@@ -7,7 +8,7 @@ export type QuoteServiceInputDto = {
     };
   };
   volumes: {
-    category: number;
+    category: FRETE_RAPIDO_CATEGORY;
     amount: number;
     unitary_weight: number;
     price: number;

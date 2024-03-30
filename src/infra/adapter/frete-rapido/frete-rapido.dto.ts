@@ -1,3 +1,5 @@
+import { FRETE_RAPIDO_CATEGORY } from './frete-rapido.enum';
+
 export type QuoteSimulateBody = {
   shipper: {
     registered_number: string;
@@ -29,7 +31,7 @@ export type QuoteSimulateBody = {
 export type FreteRapidoQuoteSimulateInput = {
   zipCode: string;
   volumes: {
-    category: number;
+    category: FRETE_RAPIDO_CATEGORY;
     amount: number;
     unitary_weight: number;
     price: number;
