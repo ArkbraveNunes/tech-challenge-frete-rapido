@@ -1,7 +1,7 @@
 import { ISimulation } from '@domain/entity';
 import { Schema, model } from 'mongoose';
 
-const simulationSchema = new Schema<ISimulation>(
+export const simulationSchema = new Schema<ISimulation>(
   {
     name: { type: String, required: true },
     service: { type: String, required: true },

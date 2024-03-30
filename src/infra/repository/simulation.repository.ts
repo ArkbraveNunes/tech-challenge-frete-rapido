@@ -11,7 +11,7 @@ import { simulationModel } from '@infra/schema';
 
 export class SimulationRepository implements ISimulationContract {
   logger: ILogger;
-  private _model: typeof simulationModel;
+  _model: typeof simulationModel;
 
   constructor() {
     this.logger = new LoggerService(SimulationRepository.name);
@@ -41,7 +41,7 @@ export class SimulationRepository implements ISimulationContract {
         });
       }
 
-      return await this._model.aggregate([
+      return this._model.aggregate([
         ...baseQuery,
         {
           $group: {
