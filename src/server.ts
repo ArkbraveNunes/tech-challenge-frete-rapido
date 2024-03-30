@@ -1,15 +1,16 @@
-import * as express from 'express';
-import { Express } from 'express';
-import * as bodyParser from 'body-parser';
-import * as cors from 'cors';
-import * as compression from 'compression';
+import express, { Express } from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import compression from 'compression';
 import helmet from 'helmet';
+import swaggerUi from 'swagger-ui-express';
 
 import { env } from '@common/env';
 import { routes } from '@application/routes';
 import { LoggerService, ILogger } from '@common/logger';
 import { IDatabaseConnection } from '@common/interfaces';
 import { MongoConnection } from '@infra/database';
+import swaggerOutput from './docs/swagger.json';
 
 class Server {
   private _logger: ILogger;
@@ -25,6 +26,7 @@ class Server {
   init(): void {
     this.setupDatabases();
     this.setupMiddlewares();
+    this.setupDocs();
     this.setupRoutes();
 
     this._app
@@ -48,7 +50,11 @@ class Server {
   }
 
   private setupRoutes(): void {
-    this._app.use('/frete-rapido', routes.init());
+    this._app.use(env.appBasePath, routes.init());
+  }
+
+  private setupDocs(): void {
+    this._app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerOutput));
   }
 }
 

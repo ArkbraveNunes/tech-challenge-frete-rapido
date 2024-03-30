@@ -4,6 +4,8 @@
     "module": "CommonJS",
     "outDir": "./dist",
     "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
     "baseUrl": "./",
     "forceConsistentCasingInFileNames": true,
     "strict": true,

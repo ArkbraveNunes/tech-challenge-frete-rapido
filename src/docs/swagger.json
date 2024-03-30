@@ -1,0 +1,327 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "localhost",
+    "title": "Frete Rapido Integration API",
+    "description": "Frete Rapido Integration API"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/frete-rapido"
+    }
+  ],
+  "paths": {
+    "/v1/metrics": {
+      "get": {
+        "tags": [
+          "Metrics"
+        ],
+        "description": "Get the metrics of all quotes stored in the database.",
+        "parameters": [
+          {
+            "name": "last_quotes",
+            "in": "query",
+            "description": "Defines how many most recent quotes will be taken into account to generate the metric.",
+            "example": 10,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetricsOutputDto"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetricsOutputDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorPattern500"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorPattern500"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/quote": {
+      "post": {
+        "tags": [
+          "Quote"
+        ],
+        "description": "Create a shipping quote using the external API Frete Rapido",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "All data is mandatory for endpoint consumption",
+            "schema": {
+              "$ref": "#/components/schemas/QuoteBodyInputDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuoteOutputDto"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuoteOutputDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorPattern400"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorPattern400"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorPattern500"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorPattern500"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "MetricsOutputDto": {
+        "type": "object",
+        "properties": {
+          "carriers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Silva, Batista e Martins"
+                },
+                "maxPrice": {
+                  "type": "number",
+                  "example": 0.64
+                },
+                "mediaPrice": {
+                  "type": "number",
+                  "example": 0.82
+                },
+                "minPrice": {
+                  "type": "number",
+                  "example": 0.39
+                },
+                "totalPrice": {
+                  "type": "number",
+                  "example": 0.17
+                },
+                "totalSimulations": {
+                  "type": "number",
+                  "example": 2
+                }
+              }
+            }
+          },
+          "maxPriceGeneral": {
+            "type": "number",
+            "example": 7
+          },
+          "minPriceGeneral": {
+            "type": "number",
+            "example": 4
+          }
+        },
+        "xml": {
+          "name": "MetricsOutputDto"
+        }
+      },
+      "QuoteBodyInputDto": {
+        "type": "object",
+        "properties": {
+          "recipient": {
+            "type": "object",
+            "properties": {
+              "address": {
+                "type": "object",
+                "properties": {
+                  "zipcode": {
+                    "type": "string",
+                    "example": "97226315"
+                  }
+                }
+              }
+            }
+          },
+          "volumes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "category": {
+                  "type": "number",
+                  "example": 7
+                },
+                "amount": {
+                  "type": "number",
+                  "example": 5
+                },
+                "unitary_weight": {
+                  "type": "number",
+                  "example": 0.77
+                },
+                "price": {
+                  "type": "number",
+                  "example": 0.11
+                },
+                "sku": {
+                  "type": "string",
+                  "example": "[&`+9CrlNS"
+                },
+                "height": {
+                  "type": "number",
+                  "example": 0.82
+                },
+                "width": {
+                  "type": "number",
+                  "example": 0.98
+                },
+                "length": {
+                  "type": "number",
+                  "example": 0.09
+                }
+              }
+            }
+          }
+        },
+        "xml": {
+          "name": "QuoteBodyInputDto"
+        }
+      },
+      "QuoteOutputDto": {
+        "type": "object",
+        "properties": {
+          "carrier": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "example": "aec24dba7da85a0515a7fdee"
+                },
+                "name": {
+                  "type": "string",
+                  "example": "Moreira Comércio"
+                },
+                "service": {
+                  "type": "string",
+                  "example": "Santos-Macedo"
+                },
+                "deadline": {
+                  "type": "number",
+                  "example": 3
+                },
+                "deliveryDate": {
+                  "type": "string",
+                  "example": "2024-11-26T11:30:09.184Z"
+                },
+                "price": {
+                  "type": "number",
+                  "example": 0
+                },
+                "createdAt": {
+                  "type": "string",
+                  "example": "2024-03-30T20:41:56.445Z"
+                },
+                "updatedAt": {
+                  "type": "string",
+                  "example": "2024-03-30T20:41:56.445Z"
+                }
+              }
+            }
+          }
+        },
+        "xml": {
+          "name": "QuoteOutputDto"
+        }
+      },
+      "ErrorPattern400": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "number",
+            "example": 400
+          },
+          "message": {
+            "type": "string",
+            "example": "BadRequest"
+          },
+          "data": {}
+        },
+        "xml": {
+          "name": "ErrorPattern400"
+        }
+      },
+      "ErrorPattern500": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "number",
+            "example": 500
+          },
+          "message": {
+            "type": "string",
+            "example": "InternalServerError"
+          },
+          "data": {}
+        },
+        "xml": {
+          "name": "ErrorPattern500"
+        }
+      }
+    }
+  }
+}
