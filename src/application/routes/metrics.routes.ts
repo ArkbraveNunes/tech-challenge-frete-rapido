@@ -12,6 +12,22 @@ export class MetricsRoutes {
     this._routeInstance
       .route('/v1/metrics')
       .get((req: Request, res: Response) =>
+        /*
+        #swagger.tags = ['Metrics']
+        #swagger.description = 'Get the metrics of all quotes stored in the database.'
+        #swagger.parameters['last_quotes'] = {
+            in: 'query',
+            description: 'Defines how many most recent quotes will be taken into account to generate the metric.',
+            type: 'number',
+            example: 10
+        }
+        #swagger.responses[200] = {
+            schema: { $ref: '#/definitions/MetricsOutputDto' }
+        }
+        #swagger.responses[500] = {
+            schema: { $ref: '#/definitions/ErrorPattern500' }
+        }
+      */
         new MetricsController().exec(req, res),
       );
   }

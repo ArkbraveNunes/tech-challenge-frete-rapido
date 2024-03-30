@@ -12,12 +12,15 @@ export class MetricsController {
     this._service = new MetricsService();
   }
 
-  async exec(req: Request, res: Response): Promise<Response<MetricsOutputDto>> {
+  async exec(
+    req: Request & { query: MetricsInputDto },
+    res: Response,
+  ): Promise<Response<MetricsOutputDto>> {
     try {
-      const query = req.query as MetricsInputDto;
+      const { last_quotes: lastQuotes } = req.query;
 
       const result: MetricsOutputDto = await this._service.exec({
-        lastQuotes: query.last_quotes ? parseInt(query.last_quotes) : 0,
+        lastQuotes: lastQuotes ? parseInt(lastQuotes) : 0,
       });
 
       return res.status(200).json(result);
