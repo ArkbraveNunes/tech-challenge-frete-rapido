@@ -83,7 +83,7 @@ describe('RequestFactoryService', () => {
     try {
       service.errorHandlerInterceptor({
         response: { status: HttpStatusCode.ServiceUnavailable },
-      });
+      } as any);
     } catch (actualError) {
       Object.keys(mockErrorPattern500).forEach((key) => {
         expect(actualError).toHaveProperty(key);
@@ -97,7 +97,7 @@ describe('RequestFactoryService', () => {
       service.errorHandlerInterceptor({
         response: { status: HttpStatusCode.BadRequest },
         data: {},
-      });
+      } as any);
     } catch (actualError) {
       Object.keys(mockErrorPattern400).forEach((key) => {
         expect(actualError).toHaveProperty(key);
@@ -110,7 +110,7 @@ describe('RequestFactoryService', () => {
     try {
       service.errorHandlerInterceptor({
         code: 'ECONNABORTED',
-      });
+      } as any);
     } catch (actualError) {
       Object.keys(mockErrorPattern400).forEach((key) => {
         expect(actualError).toHaveProperty(key);
@@ -121,7 +121,7 @@ describe('RequestFactoryService', () => {
 
   it('should call errorHandlerInterceptor - return INTERNAL_SERVER_ERROR (Unknown Error)', async () => {
     try {
-      service.errorHandlerInterceptor({});
+      service.errorHandlerInterceptor({} as any);
     } catch (actualError) {
       Object.keys(mockErrorPattern500).forEach((key) => {
         expect(actualError).toHaveProperty(key);
@@ -132,7 +132,7 @@ describe('RequestFactoryService', () => {
 
   it('should call axiosRetryInterceptor - return INTERNAL_SERVER_ERROR (Unknown Error)', async () => {
     try {
-      await service.axiosRetryInterceptor({});
+      await service.axiosRetryInterceptor({} as any);
     } catch (actualError) {
       Object.keys(mockErrorPattern500).forEach((key) => {
         expect(actualError).toHaveProperty(key);
@@ -145,10 +145,12 @@ describe('RequestFactoryService', () => {
     jest
       .spyOn(service._httpService, 'get')
       .mockImplementation(() =>
-        service.axiosRetryInterceptor(mockAxiosError(HTTP_METHODS.GET)),
+        service.axiosRetryInterceptor(mockAxiosError(HTTP_METHODS.GET) as any),
       );
     try {
-      await service.axiosRetryInterceptor(mockAxiosError(HTTP_METHODS.GET, 1));
+      await service.axiosRetryInterceptor(
+        mockAxiosError(HTTP_METHODS.GET, 1) as any,
+      );
     } catch (actualError) {
       Object.keys(mockErrorPattern400).forEach((key) => {
         expect(actualError).toHaveProperty(key);
@@ -161,10 +163,12 @@ describe('RequestFactoryService', () => {
     jest
       .spyOn(service._httpService, 'post')
       .mockImplementation(() =>
-        service.axiosRetryInterceptor(mockAxiosError(HTTP_METHODS.POST)),
+        service.axiosRetryInterceptor(mockAxiosError(HTTP_METHODS.POST) as any),
       );
     try {
-      await service.axiosRetryInterceptor(mockAxiosError(HTTP_METHODS.POST, 1));
+      await service.axiosRetryInterceptor(
+        mockAxiosError(HTTP_METHODS.POST, 1) as any,
+      );
     } catch (actualError) {
       Object.keys(mockErrorPattern400).forEach((key) => {
         expect(actualError).toHaveProperty(key);
@@ -177,10 +181,12 @@ describe('RequestFactoryService', () => {
     jest
       .spyOn(service._httpService, 'put')
       .mockImplementation(() =>
-        service.axiosRetryInterceptor(mockAxiosError(HTTP_METHODS.PUT)),
+        service.axiosRetryInterceptor(mockAxiosError(HTTP_METHODS.PUT) as any),
       );
     try {
-      await service.axiosRetryInterceptor(mockAxiosError(HTTP_METHODS.PUT, 1));
+      await service.axiosRetryInterceptor(
+        mockAxiosError(HTTP_METHODS.PUT, 1) as any,
+      );
     } catch (actualError) {
       Object.keys(mockErrorPattern400).forEach((key) => {
         expect(actualError).toHaveProperty(key);
@@ -193,11 +199,13 @@ describe('RequestFactoryService', () => {
     jest
       .spyOn(service._httpService, 'patch')
       .mockImplementation(() =>
-        service.axiosRetryInterceptor(mockAxiosError(HTTP_METHODS.PATCH)),
+        service.axiosRetryInterceptor(
+          mockAxiosError(HTTP_METHODS.PATCH) as any,
+        ),
       );
     try {
       await service.axiosRetryInterceptor(
-        mockAxiosError(HTTP_METHODS.PATCH, 1),
+        mockAxiosError(HTTP_METHODS.PATCH, 1) as any,
       );
     } catch (actualError) {
       Object.keys(mockErrorPattern400).forEach((key) => {
@@ -210,11 +218,13 @@ describe('RequestFactoryService', () => {
     jest
       .spyOn(service._httpService, 'delete')
       .mockImplementation(() =>
-        service.axiosRetryInterceptor(mockAxiosError(HTTP_METHODS.DELETE)),
+        service.axiosRetryInterceptor(
+          mockAxiosError(HTTP_METHODS.DELETE) as any,
+        ),
       );
     try {
       await service.axiosRetryInterceptor(
-        mockAxiosError(HTTP_METHODS.DELETE, 1),
+        mockAxiosError(HTTP_METHODS.DELETE, 1) as any,
       );
     } catch (actualError) {
       Object.keys(mockErrorPattern400).forEach((key) => {

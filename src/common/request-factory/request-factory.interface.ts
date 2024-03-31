@@ -1,6 +1,6 @@
 import { RequestFactoryMethodInput } from './request-factory.dto';
 
-export interface RequestFactory {
+export interface IRequestFactory {
   get(
     requestFactoryMethodInput: Omit<RequestFactoryMethodInput, 'data'>,
   ): Promise<Record<string, any>>;

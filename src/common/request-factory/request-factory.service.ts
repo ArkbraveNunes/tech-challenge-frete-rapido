@@ -1,6 +1,6 @@
-import axios, { AxiosInstance, HttpStatusCode } from 'axios';
+import axios, { AxiosInstance, HttpStatusCode, AxiosError } from 'axios';
 
-import { RequestFactory } from './request-factory.interface';
+import { IRequestFactory } from './request-factory.interface';
 import { AXIOS_ERRORS, HTTP_METHODS } from './request-factory.enum';
 import { ErrorPatternService } from '@common/error-pattern';
 import {
@@ -9,7 +9,7 @@ import {
   RequestFactoryRetriesHeader,
 } from './request-factory.dto';
 
-export class RequestFactoryService implements RequestFactory {
+export class RequestFactoryService implements IRequestFactory {
   _httpService: AxiosInstance;
   axiosRetriesHeader: RequestFactoryRetriesHeader;
   constructor(
@@ -107,7 +107,7 @@ export class RequestFactoryService implements RequestFactory {
     });
   }
 
-  errorHandlerInterceptor(error: Record<string, any>): void {
+  errorHandlerInterceptor(error: AxiosError): void {
     const errorPattern = new ErrorPatternService();
 
     const httpAxiosErrors = {
@@ -209,7 +209,7 @@ export class RequestFactoryService implements RequestFactory {
   }
 
   async axiosRetryInterceptor(
-    error: Record<string, any>,
+    error: AxiosError,
   ): Promise<Record<string, any> | void> {
     const requestRetries = error.config?.headers?.requestRetries || 0;
     const axiosRetriesStatus = [HttpStatusCode.RequestTimeout];

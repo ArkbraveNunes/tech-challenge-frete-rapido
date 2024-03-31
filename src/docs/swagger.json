@@ -140,38 +140,38 @@
               "properties": {
                 "name": {
                   "type": "string",
-                  "example": "Oliveira S.A."
+                  "example": "Albuquerque-Batista"
                 },
                 "maxPrice": {
                   "type": "number",
-                  "example": 0.79
+                  "example": 0.8
                 },
                 "mediaPrice": {
                   "type": "number",
-                  "example": 0.71
+                  "example": 0.79
                 },
                 "minPrice": {
                   "type": "number",
-                  "example": 0.49
+                  "example": 0.04
                 },
                 "totalPrice": {
                   "type": "number",
-                  "example": 0.27
+                  "example": 0.57
                 },
                 "totalSimulations": {
                   "type": "number",
-                  "example": 4
+                  "example": 9
                 }
               }
             }
           },
           "maxPriceGeneral": {
             "type": "number",
-            "example": 10
+            "example": 0
           },
           "minPriceGeneral": {
             "type": "number",
-            "example": 9
+            "example": 0
           }
         },
         "xml": {
@@ -189,7 +189,7 @@
                 "properties": {
                   "zipcode": {
                     "type": "string",
-                    "example": "45489553"
+                    "example": "85872164"
                   }
                 }
               }
@@ -206,31 +206,31 @@
                 },
                 "amount": {
                   "type": "number",
-                  "example": 3
+                  "example": 7
                 },
                 "unitary_weight": {
                   "type": "number",
-                  "example": 0.7
+                  "example": 0.32
                 },
                 "price": {
                   "type": "number",
-                  "example": 0.73
+                  "example": 0.39
                 },
                 "sku": {
                   "type": "string",
-                  "example": "BZFZ*mf8n3"
+                  "example": "%{^gC+{ePW"
                 },
                 "height": {
                   "type": "number",
-                  "example": 0.37
+                  "example": 0.48
                 },
                 "width": {
                   "type": "number",
-                  "example": 0.21
+                  "example": 0.82
                 },
                 "length": {
                   "type": "number",
-                  "example": 0.73
+                  "example": 0.1
                 }
               }
             }
@@ -250,35 +250,35 @@
               "properties": {
                 "id": {
                   "type": "string",
-                  "example": "b2733d7e938c2e3ba2e03b81"
+                  "example": "ac9ae5014ccdb2ac2da181ae"
                 },
                 "name": {
                   "type": "string",
-                  "example": "Moraes, Franco e Santos"
+                  "example": "Saraiva, Moreira e Batista"
                 },
                 "service": {
                   "type": "string",
-                  "example": "Franco, Costa e Moreira"
+                  "example": "Pereira-Souza"
                 },
                 "deadline": {
                   "type": "number",
-                  "example": 1
+                  "example": 5
                 },
                 "deliveryDate": {
                   "type": "string",
-                  "example": "2024-12-24T15:29:07.916Z"
+                  "example": "2024-07-04T10:18:09.135Z"
                 },
                 "price": {
                   "type": "number",
-                  "example": 0.13
+                  "example": 0.41
                 },
                 "createdAt": {
                   "type": "string",
-                  "example": "2024-03-30T23:36:26.460Z"
+                  "example": "2024-03-31T19:50:25.062Z"
                 },
                 "updatedAt": {
                   "type": "string",
-                  "example": "2024-03-30T23:36:26.460Z"
+                  "example": "2024-03-31T19:50:25.062Z"
                 }
               }
             }

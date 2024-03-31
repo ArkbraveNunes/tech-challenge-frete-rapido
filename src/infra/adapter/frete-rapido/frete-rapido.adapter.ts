@@ -1,4 +1,7 @@
-import { RequestFactory, RequestFactoryService } from '@common/request-factory';
+import {
+  IRequestFactory,
+  RequestFactoryService,
+} from '@common/request-factory';
 import {
   FreteRapidoQuoteSimulateInput,
   FreteRapidoQuoteSimulateOutput,
@@ -8,7 +11,7 @@ import { FRETE_RAPIDO_SIMULATION_TYPE } from './frete-rapido.enum';
 import { env } from '@common/env';
 
 export class FreteRapidoAdapter {
-  _requestFactory: RequestFactory;
+  _requestFactory: IRequestFactory;
 
   constructor() {
     this._requestFactory = new RequestFactoryService({
