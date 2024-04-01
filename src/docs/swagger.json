@@ -68,16 +68,6 @@
           "Quote"
         ],
         "description": "Create a shipping quote using the external API Frete Rapido",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "description": "All data is mandatory for endpoint consumption",
-            "schema": {
-              "$ref": "#/components/schemas/QuoteBodyInputDto"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -124,6 +114,22 @@
               }
             }
           }
+        },
+        "requestBody": {
+          "required": true,
+          "description": "All data is mandatory for endpoint consumption",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuoteBodyInputDto"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/QuoteBodyInputDto"
+              }
+            }
+          }
         }
       }
     }
@@ -140,38 +146,38 @@
               "properties": {
                 "name": {
                   "type": "string",
-                  "example": "Albuquerque-Batista"
+                  "example": "Franco S.A."
                 },
                 "maxPrice": {
                   "type": "number",
-                  "example": 0.8
+                  "example": 0.5
                 },
                 "mediaPrice": {
                   "type": "number",
-                  "example": 0.79
+                  "example": 0.11
                 },
                 "minPrice": {
                   "type": "number",
-                  "example": 0.04
+                  "example": 0.84
                 },
                 "totalPrice": {
                   "type": "number",
-                  "example": 0.57
+                  "example": 0.04
                 },
                 "totalSimulations": {
                   "type": "number",
-                  "example": 9
+                  "example": 10
                 }
               }
             }
           },
           "maxPriceGeneral": {
             "type": "number",
-            "example": 0
+            "example": 9
           },
           "minPriceGeneral": {
             "type": "number",
-            "example": 0
+            "example": 9
           }
         },
         "xml": {
@@ -189,7 +195,7 @@
                 "properties": {
                   "zipcode": {
                     "type": "string",
-                    "example": "85872164"
+                    "example": "85823061"
                   }
                 }
               }
@@ -206,31 +212,31 @@
                 },
                 "amount": {
                   "type": "number",
-                  "example": 7
+                  "example": 9
                 },
                 "unitary_weight": {
                   "type": "number",
-                  "example": 0.32
+                  "example": 0.18
                 },
                 "price": {
                   "type": "number",
-                  "example": 0.39
+                  "example": 0.92
                 },
                 "sku": {
                   "type": "string",
-                  "example": "%{^gC+{ePW"
+                  "example": "UFTq.t_z<U"
                 },
                 "height": {
                   "type": "number",
-                  "example": 0.48
+                  "example": 0.75
                 },
                 "width": {
                   "type": "number",
-                  "example": 0.82
+                  "example": 0.18
                 },
                 "length": {
                   "type": "number",
-                  "example": 0.1
+                  "example": 0.3
                 }
               }
             }
@@ -250,35 +256,35 @@
               "properties": {
                 "id": {
                   "type": "string",
-                  "example": "ac9ae5014ccdb2ac2da181ae"
+                  "example": "0deec977bafecc41c32ccd78"
                 },
                 "name": {
                   "type": "string",
-                  "example": "Saraiva, Moreira e Batista"
+                  "example": "Braga, Barros e Santos"
                 },
                 "service": {
                   "type": "string",
-                  "example": "Pereira-Souza"
+                  "example": "Pereira-Moraes"
                 },
                 "deadline": {
                   "type": "number",
-                  "example": 5
+                  "example": 0
                 },
                 "deliveryDate": {
                   "type": "string",
-                  "example": "2024-07-04T10:18:09.135Z"
+                  "example": "2024-10-23T06:39:10.111Z"
                 },
                 "price": {
                   "type": "number",
-                  "example": 0.41
+                  "example": 0.2
                 },
                 "createdAt": {
                   "type": "string",
-                  "example": "2024-03-31T19:50:25.062Z"
+                  "example": "2024-04-01T15:50:56.380Z"
                 },
                 "updatedAt": {
                   "type": "string",
-                  "example": "2024-03-31T19:50:25.062Z"
+                  "example": "2024-04-01T15:50:56.380Z"
                 }
               }
             }

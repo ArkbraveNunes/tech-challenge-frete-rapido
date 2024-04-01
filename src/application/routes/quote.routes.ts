@@ -18,8 +18,8 @@ export class QuoteRoutes {
         /*
         #swagger.tags = ['Quote']
         #swagger.description = 'Create a shipping quote using the external API Frete Rapido'
-        #swagger.parameters['body'] = {
-            in: 'body',
+        #swagger.requestBody  = {
+            required: true,
             description: 'All data is mandatory for endpoint consumption',
             schema: { $ref: '#/definitions/QuoteBodyInputDto' }
         }

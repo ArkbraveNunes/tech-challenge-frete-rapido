@@ -25,4 +25,4 @@ lerna-debug.log*
 *.sublime-workspace
 
 #Swagger Update
-./src/docs/swagger.json
+/src/docs/swagger.json
