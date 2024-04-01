@@ -6,6 +6,16 @@ import {
   mockQuoteServiceInput,
 } from '@test/mock';
 
+jest.mock('@common/logger', () => ({
+  ...jest.requireActual('@common/logger'),
+  LoggerService: jest.fn(
+    () =>
+      new (class MockRequestFactoryService {
+        error() {}
+      })(),
+  ),
+}));
+
 jest.mock('@infra/adapter', () => ({
   ...jest.requireActual('@infra/adapter'),
   FreteRapidoAdapter: jest.fn(

@@ -7,6 +7,16 @@ import {
   mockMetricsServiceOutput,
 } from '@test/mock';
 
+jest.mock('@common/logger', () => ({
+  ...jest.requireActual('@common/logger'),
+  LoggerService: jest.fn(
+    () =>
+      new (class MockRequestFactoryService {
+        error() {}
+      })(),
+  ),
+}));
+
 jest.mock('@infra/repository', () => ({
   ...jest.requireActual('@infra/repository'),
   SimulationRepository: jest.fn(

@@ -146,38 +146,38 @@
               "properties": {
                 "name": {
                   "type": "string",
-                  "example": "Franco S.A."
+                  "example": "Nogueira-Carvalho"
                 },
                 "maxPrice": {
                   "type": "number",
-                  "example": 0.5
+                  "example": 0.13
                 },
                 "mediaPrice": {
                   "type": "number",
-                  "example": 0.11
+                  "example": 0.14
                 },
                 "minPrice": {
                   "type": "number",
-                  "example": 0.84
+                  "example": 0.25
                 },
                 "totalPrice": {
                   "type": "number",
-                  "example": 0.04
+                  "example": 0.02
                 },
                 "totalSimulations": {
                   "type": "number",
-                  "example": 10
+                  "example": 9
                 }
               }
             }
           },
           "maxPriceGeneral": {
             "type": "number",
-            "example": 9
+            "example": 5
           },
           "minPriceGeneral": {
             "type": "number",
-            "example": 9
+            "example": 10
           }
         },
         "xml": {
@@ -195,7 +195,7 @@
                 "properties": {
                   "zipcode": {
                     "type": "string",
-                    "example": "85823061"
+                    "example": "88159061"
                   }
                 }
               }
@@ -212,31 +212,31 @@
                 },
                 "amount": {
                   "type": "number",
-                  "example": 9
+                  "example": 8
                 },
                 "unitary_weight": {
                   "type": "number",
-                  "example": 0.18
+                  "example": 0.1
                 },
                 "price": {
                   "type": "number",
-                  "example": 0.92
+                  "example": 0.01
                 },
                 "sku": {
                   "type": "string",
-                  "example": "UFTq.t_z<U"
+                  "example": "3?&uKM0-10"
                 },
                 "height": {
                   "type": "number",
-                  "example": 0.75
+                  "example": 0.53
                 },
                 "width": {
                   "type": "number",
-                  "example": 0.18
+                  "example": 0.97
                 },
                 "length": {
                   "type": "number",
-                  "example": 0.3
+                  "example": 0.26
                 }
               }
             }
@@ -256,35 +256,35 @@
               "properties": {
                 "id": {
                   "type": "string",
-                  "example": "0deec977bafecc41c32ccd78"
+                  "example": "adfeccaaaac1bac7060a095f"
                 },
                 "name": {
                   "type": "string",
-                  "example": "Braga, Barros e Santos"
+                  "example": "Nogueira-Martins"
                 },
                 "service": {
                   "type": "string",
-                  "example": "Pereira-Moraes"
+                  "example": "Xavier S.A."
                 },
                 "deadline": {
                   "type": "number",
-                  "example": 0
+                  "example": 6
                 },
                 "deliveryDate": {
                   "type": "string",
-                  "example": "2024-10-23T06:39:10.111Z"
+                  "example": "2025-01-23T07:03:04.049Z"
                 },
                 "price": {
                   "type": "number",
-                  "example": 0.2
+                  "example": 0.47
                 },
                 "createdAt": {
                   "type": "string",
-                  "example": "2024-04-01T15:50:56.380Z"
+                  "example": "2024-04-01T16:08:29.647Z"
                 },
                 "updatedAt": {
                   "type": "string",
-                  "example": "2024-04-01T15:50:56.380Z"
+                  "example": "2024-04-01T16:08:29.647Z"
                 }
               }
             }

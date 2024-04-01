@@ -10,6 +10,16 @@ import { simulationSchema, simulationModel } from '@infra/schema';
 import { SimulationRepository } from '@infra/repository';
 import { ErrorPatternOutput } from '@common/error-pattern';
 
+jest.mock('@common/logger', () => ({
+  ...jest.requireActual('@common/logger'),
+  LoggerService: jest.fn(
+    () =>
+      new (class MockRequestFactoryService {
+        error() {}
+      })(),
+  ),
+}));
+
 describe('SimulationRepository', () => {
   let mongoSimulationRepository: SimulationRepository;
   let inMemoryMongoServer: MongoMemoryServer;
