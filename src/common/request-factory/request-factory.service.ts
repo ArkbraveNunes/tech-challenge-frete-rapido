@@ -213,11 +213,12 @@ export class RequestFactoryService implements IRequestFactory {
   ): Promise<Record<string, any> | void> {
     const requestRetries = error.config?.headers?.requestRetries || 0;
     const axiosRetriesStatus = [HttpStatusCode.RequestTimeout];
+    console.log(error);
 
     if (requestRetries === 0) {
       this.errorHandlerInterceptor(error);
     } else if (
-      error.response.status &&
+      error?.response?.status &&
       (axiosRetriesStatus.includes(error.response.status) ||
         error.response.status >= 500)
     ) {
