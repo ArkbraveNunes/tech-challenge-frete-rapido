@@ -1,7 +1,8 @@
-module.exports = {
+export default {
   displayName: 'tech-challenge-frete-rapido',
   clearMocks: true,
   rootDir: '.',
+  testRegex: '\\.spec.e2e\\.ts$',
   transform: {
     '^.+\\.(t|j)sx?$': 'ts-jest',
   },
@@ -14,17 +15,4 @@ module.exports = {
     '^@test(.*)$': '<rootDir>/src/test/$1',
   },
   testEnvironment: 'node',
-  reporters: [
-    'default',
-    [
-      'jest-html-reporter',
-      {
-        outputPath: './reports/test-report.html',
-        pageTitle: 'Tests Report',
-        includeFailureMsg: true,
-        openReport: true,
-        expand: true,
-      },
-    ],
-  ],
 };

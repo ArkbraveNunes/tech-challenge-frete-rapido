@@ -8,14 +8,17 @@ export const env = Object.freeze({
   appDescription: 'Frete Rapido Integration API',
   appVersion: process.env.VERSION || 'localhost',
   appBasePath: '/frete-rapido',
-  database: {
+  database: Object.freeze({
     host: process.env.APPLICATION__DB_HOST,
     port: process.env.APPLICATION__DB_PORT,
     database: process.env.APPLICATION__DB_NAME,
     username: process.env.APPLICATION__DB_USER,
     password: process.env.APPLICATION__DB_PASS,
     type: process.env.APPLICATION__DB_TYPE || '',
-  },
+    schemasName: Object.freeze({
+      simulationSchema: 'simulation',
+    }),
+  }),
   apiFreteRapidoUrl: process.env.API_FRETE_RAPIDO__URL,
   apiFreteRapidoToken: process.env.API_FRETE_RAPIDO__TOKEN,
   apiFreteRapidoCNPJ: process.env.API_FRETE_RAPIDO__CNPJ,

@@ -18,7 +18,7 @@ module.exports = {
     project: 'tsconfig.json',
     tsconfigRootDir: __dirname,
   },
-  ignorePatterns: ['.eslintrc.js'],
+  ignorePatterns: ['.eslintrc.js', 'jest.config.ts'],
   rules: {
     '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',

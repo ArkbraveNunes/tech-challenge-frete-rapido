@@ -1,3 +1,4 @@
+import { env } from '@common/env';
 import { ISimulation } from '@domain/entity';
 import { Schema, model } from 'mongoose';
 
@@ -14,4 +15,7 @@ export const simulationSchema = new Schema<ISimulation>(
   { id: true, versionKey: false, timestamps: true },
 );
 
-export const simulationModel = model('simulation', simulationSchema);
+export const simulationModel = model(
+  env.database.schemasName.simulationSchema,
+  simulationSchema,
+);
